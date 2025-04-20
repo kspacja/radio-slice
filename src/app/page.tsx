@@ -38,6 +38,7 @@ export default function Home() {
             process.env.NEXT_PUBLIC_CLOUDINARY_KEY!
           );
 
+          // eslint-disable-next-line @typescript-eslint/no-unused-vars
           const uploaded = await fetch(
             `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_NAME}/video/upload`,
             { method: 'POST', body: uploadFormData }
