@@ -20,7 +20,6 @@ export default async function getSignUploadRequest(
   const optionsForSignature: SignApiOptions = {
     timestamp,
     public_id: filename,
-    // bit_rate: '42k',
     eager: 'br_42k',
   };
 

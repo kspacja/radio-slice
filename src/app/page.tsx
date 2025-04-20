@@ -1,7 +1,8 @@
 'use client';
 
+import transcribe from '@/actions/transcribe';
 // import transcribe from '@/actions/transcribe';
-import getSignUploadRequest from '@/actions/upload';
+// import getSignUploadRequest from '@/actions/upload';
 import { Group, Text } from '@mantine/core';
 import { Dropzone } from '@mantine/dropzone';
 import '@mantine/dropzone/styles.css';
@@ -18,33 +19,35 @@ export default function Home() {
 
   return (
     <Dropzone
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       onDrop={(files) => {
         startTransition(async () => {
-          console.log('start...');
-          const formData = new FormData();
-          formData.append('filename', files[0].name);
-          console.log('get signature');
-          const params = await getSignUploadRequest(formData);
+          // console.log('start...');
+          // const formData = new FormData();
+          // formData.append('filename', files[0].name);
+          // console.log('get signature');
+          // const params = await getSignUploadRequest(formData);
 
-          const paramsEntries = Object.entries(params);
+          // const paramsEntries = Object.entries(params);
 
-          const uploadFormData = new FormData();
-          paramsEntries.forEach(([key, value]) => {
-            uploadFormData.append(key, value);
-          });
-          uploadFormData.append('file', files[0]);
-          uploadFormData.append(
-            'api_key',
-            process.env.NEXT_PUBLIC_CLOUDINARY_KEY!
-          );
+          // const uploadFormData = new FormData();
+          // paramsEntries.forEach(([key, value]) => {
+          //   uploadFormData.append(key, value);
+          // });
+          // uploadFormData.append('file', files[0]);
+          // uploadFormData.append(
+          //   'api_key',
+          //   process.env.NEXT_PUBLIC_CLOUDINARY_KEY!
+          // );
 
-          // eslint-disable-next-line @typescript-eslint/no-unused-vars
-          const uploaded = await fetch(
-            `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_NAME}/video/upload`,
-            { method: 'POST', body: uploadFormData }
-          );
+          // const uploaded = await fetch(
+          //   `https://api.cloudinary.com/v1_1/${process.env.NEXT_PUBLIC_CLOUDINARY_NAME}/video/upload`,
+          //   { method: 'POST', body: uploadFormData }
+          // );
 
-          // const { url } = await uploaded.json();
+          //const { url } = await uploaded.json();
+
+          await transcribe('http://example.com/file.mp3');
         });
       }}
       onReject={(files) => {
